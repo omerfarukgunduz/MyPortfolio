@@ -1,8 +1,12 @@
-﻿namespace MyPortfolio.DAL.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MyPortfolio.DAL.Entities
 {
 	public class Experience
 	{
-        public int ExperieceId { get; set; }
+		[Key]
+
+		public int ExperieceId { get; set; }
 		public string Title { get; set; }
 		public string Company { get; set; }
 

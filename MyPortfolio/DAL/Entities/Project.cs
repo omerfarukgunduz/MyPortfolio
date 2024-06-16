@@ -1,7 +1,11 @@
-﻿namespace MyPortfolio.DAL.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MyPortfolio.DAL.Entities
 {
 	public class Project
 	{
+		[Key]
+
 		public int ProjectId { get; set; }
 
 		public string ProjectName { get; set; }

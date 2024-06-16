@@ -1,8 +1,12 @@
-﻿namespace MyPortfolio.DAL.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MyPortfolio.DAL.Entities
 {
 	public class Education
 	{
-        public int EducationId { get; set; }
+		[Key]
+
+		public int EducationId { get; set; }
 
 		public string SchoolName { get; set;}
 		public string Department { get; set;}
