@@ -1,5 +1,9 @@
-﻿<div class="d-flex justify-content-center fs-2 gap-4">
-    <a class="text-gradient" href="#!"><i class="bi bi-twitter"></i></a>
-    <a class="text-gradient" href="#!"><i class="bi bi-linkedin"></i></a>
-    <a class="text-gradient" href="#!"><i class="bi bi-github"></i></a>
+﻿@model List<MyPortfolio.DAL.Entities.SocialMedia>
+<div class="d-flex justify-content-center fs-2 gap-4 flex-wrap">
+    @foreach (var item in Model)
+    {
+        <a class="text-gradient" href="@item.SocialMediaUrl" style="flex: 0 0 auto;">
+            <i class="@item.SocialMediaIcon"></i>
+        </a>
+    }
 </div>

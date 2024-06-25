@@ -3,14 +3,12 @@ using MyPortfolio.DAL.Context;
 
 namespace MyPortfolio.ViewComponents
 {
-    public class SocialMediaComponentPartial:ViewComponent
+    public class FeatureComponentPartial:ViewComponent
     {
-        MyPortfolioContext portfolioContext = new MyPortfolioContext();
-
+        MyPortfolioContext portfolioContext= new MyPortfolioContext();
         public IViewComponentResult Invoke()
         {
-            var values = portfolioContext.SocialMedias.ToList();
-
+            var values = portfolioContext.Features.ToList();
             return View(values);
         }
     }

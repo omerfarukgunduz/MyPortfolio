@@ -11,6 +11,8 @@ namespace MyPortfolio.DAL.Entities
 		public string SchoolName { get; set;}
 		public string Department { get; set;}
 
-		public string Description { get; set;}	
+		public string Date { get; set; }
+
+        public string Description { get; set;}	
     }
 }

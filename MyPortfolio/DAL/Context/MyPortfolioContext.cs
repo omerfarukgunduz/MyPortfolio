@@ -19,5 +19,7 @@ namespace MyPortfolio.DAL.Context
 		public DbSet<Project> Projects { get; set; }
 		public DbSet<Skill> Skills { get; set; }
 		public DbSet<SocialMedia> SocialMedias { get; set; }
+		public DbSet<DownloadCV> DownloadCVs { get; set; }
+
 	}
 }
