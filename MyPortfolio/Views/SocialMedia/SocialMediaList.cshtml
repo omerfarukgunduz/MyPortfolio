@@ -1,0 +1,53 @@
+﻿@model List<SocialMedia>
+@{
+    ViewData["Title"] = "SocialMediaList";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+
+<div class="content">
+	<div class="container-fluid">
+		<h4 class="page-title">Sosyal Medyalar</h4>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Sosyal Medyalar Listesi</div>
+					</div>
+					<div class="card-body">
+						<div class="card-sub">
+							Sosyal Medyalar ile ilgili işlemleri aşağıdaki panelden yapabilirsiniz.
+						</div>
+						<table class="table mt-3">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Sosyal Medya Adı</th>
+									<th scope="col">Sosyal Medya Url</th>
+									<th scope="col">Sosyal Medya İkonu</th>
+									<th scope="col">Sil</th>
+									<th scope="col">Güncelle</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>@item.SocialMediaId</td>
+										<td>@item.SocialMediaName</td>
+										<td>@item.SocialMediaUrl</td>
+										<td>@item.SocialMediaIcon</td>
+										<td><a href="/SocialMedia/DeleteSocialMedia/@item.SocialMediaId" class="btn btn-danger">Sil</a></td>
+										<td><a href="/SocialMedia/UpdateSocialMedia/@item.SocialMediaId" class="btn btn-success">Güncelle</a></td>
+									</tr>
+								}
+							</tbody>
+						</table>
+						<a href="/SocialMedia/CreateSocialMedia/" class="btn btn-primary">Yeni Sosyal Medya Ekle</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

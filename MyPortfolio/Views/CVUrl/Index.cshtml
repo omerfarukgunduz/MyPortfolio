@@ -1,0 +1,48 @@
+﻿@model List<DownloadCV>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+	<div class="container-fluid">
+		<h4 class="page-title">Deneyimler</h4>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">CV İndirme Bağlantısını Güncelleme Sayfası</div>
+					</div>
+					<div class="card-body">
+						<div class="card-sub">
+							CV İndirme Bağlantısını aşağıdaki panelden güncelleyebilirsiniz.
+							Google drive urlini doğrudan indirilebilir yapmak için <a link href="https://chatgpt.com/share/1ed088d3-ad11-42e6-b4a6-850426641d79" target="_blank">bu sayfayı</a> kullanın.
+						</div>
+						<table class="table mt-3">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">CV Url</th>
+									<th scope="col">Güncelle</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>@item.CVId</td>
+										<td>@item.DownloadUrl</td>
+										<td><a href="/CVUrl/UpdateCVUrl/@item.CVId" class="btn btn-success">Güncelle</a></td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

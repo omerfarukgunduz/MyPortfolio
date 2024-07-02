@@ -1,0 +1,36 @@
+﻿@model SocialMedia
+@{
+    ViewData["Title"] = "CreateSocialMedia";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+<div class="content">
+	<div class="container-fluid">
+		<h4 class="page-title">Sosyal Medyalar</h4>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Sosyal Medya Ekleme Sayfası</div>
+					</div>
+					<div class="card-body">
+
+						<form method="post">
+							<label>Sosyal Medya Adı</label>
+							<input type="text" asp-for="SocialMediaName" class="form-control" />
+							<br />
+							<label>Sosyal Medya Url</label>
+							<input type="text" asp-for="SocialMediaUrl" class="form-control" />
+							<br />
+							<label>Sosyal Medya İkonu ( İkon etiketlerini görmek için <a link href="https://icons.getbootstrap.com/?q=social" target="_blank">tıklayın</a>. )</label>
+							<input type="text" asp-for="SocialMediaIcon" class="form-control" />
+							<br />
+							
+							<button class="btn btn-primary">Sosyal Medya Ekle</button>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

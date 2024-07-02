@@ -1,0 +1,55 @@
+﻿@model List<Project>
+@{
+    ViewData["Title"] = "ProjectList";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+	<div class="container-fluid">
+		<h4 class="page-title">Projeler</h4>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Proje Listesi</div>
+					</div>
+					<div class="card-body">
+						<div class="card-sub">
+							Projeler ile ilgili işlemleri aşağıdaki panelden yapabilirsiniz.
+						</div>
+						<table class="table mt-3">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Proje Adı</th>
+									<th scope="col">Proje Açıklaması</th>
+									<th scope="col">Proje Linki</th>
+									<th scope="col">Proje Görseli</th>
+									<th scope="col">Sil</th>
+									<th scope="col">Güncelle</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>@item.ProjectId</td>
+										<td>@item.ProjectName</td>
+										<td>@item.ProjectDescription</td>
+										<td>@item.ProjectLink</td>
+										<td>
+											<img src="@item.Projectİmage" alt="Image" width="100" height="100" />
+										</td>
+										<td><a href="/Project/DeleteProject/@item.ProjectId" class="btn btn-danger">Sil</a></td>
+										<td><a href="/Project/UpdateProject/@item.ProjectId" class="btn btn-success">Güncelle</a></td>
+									</tr>
+								}
+							</tbody>
+						</table>
+						<a href="/Project/CreateProject/" class="btn btn-primary">Yeni Proje Ekle</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
