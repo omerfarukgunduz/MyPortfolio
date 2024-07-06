@@ -21,6 +21,7 @@ namespace MyPortfolio.DAL.Context
 		public DbSet<SocialMedia> SocialMedias { get; set; }
 		public DbSet<DownloadCV> DownloadCVs { get; set; }
 		public DbSet<Message> Messages { get; set; }
+		public DbSet<Admin> Admins { get; set; }
 
 	}
 }

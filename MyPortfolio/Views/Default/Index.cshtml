@@ -31,10 +31,10 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
-                            <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#Hakkımda">Hakkımda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#Özgeçmiş">Özgeçmiş</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#Projeler">Projeler</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#İletişim">İletişim</a></li>
                         </ul>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
             <!-- Header-->
         @await Component.InvokeAsync("FeatureComponentPartial")
             <!-- About Section-->
-            <section class="bg-light py-5">
+            <section class="bg-light py-5" id="Hakkımda">
             @await Component.InvokeAsync("AboutComponentPartial")
             <!-- Social Media-->
             @await Component.InvokeAsync("SocialMediaComponentPartial")
@@ -51,6 +51,7 @@
 
             <!-- RESUME------------------------------------------------------------------->
 
+        <section id="Özgeçmiş">
 
             <div class="container px-5 my-5">
                 <div class="text-center mb-5">
@@ -59,7 +60,7 @@
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-11 col-xl-9 col-xxl-8">
                         <!-- Experience Section-->
-                        <section>
+                        <section >
                         @await Component.InvokeAsync("DownloadCVComponentPartial")
 
                             <!-- Experience Card 1-->
@@ -81,9 +82,10 @@
                     </div>
                 </div>
             </div>
-        
+        </section>
+
             <!-- PROJECTS------------------------------------------------------------------->
-            <section class="py-5">
+            <section class="py-5" id="Projeler" >
             @await Component.InvokeAsync("ProjectComponentPartial")
 
             </section>
@@ -95,14 +97,14 @@
                 <div class="container px-5 my-5">
                     <div class="text-center">
                         <h2 class="display-4 fw-bolder mb-4">Benimle çalışmak ister misiniz ?</h2>
-                        <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="contact.html">İletişime Geç</a>
+                        <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="#İletişim">İletişime Geç</a>
                     </div>
                 </div>
             </section>
 
             <!-- contact-->
 
-            <section class="py-5">
+            <section class="py-5" id="İletişim" >
             @await Component.InvokeAsync("ContactComponentPartial")
             </section>
 

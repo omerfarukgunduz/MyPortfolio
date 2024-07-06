@@ -3,6 +3,7 @@ using MyPortfolio.DAL.Context;
 
 namespace MyPortfolio.ViewComponents
 {
+
     public class DownloadCVComponentPartial:ViewComponent
     {
         MyPortfolioContext portfolioContext = new MyPortfolioContext();

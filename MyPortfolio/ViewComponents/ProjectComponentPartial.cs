@@ -3,6 +3,7 @@ using MyPortfolio.DAL.Context;
 
 namespace MyPortfolio.ViewComponents
 {
+
     public class ProjectComponentPartial:ViewComponent
     {
         MyPortfolioContext portfolioContext = new MyPortfolioContext();

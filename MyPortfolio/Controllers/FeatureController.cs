@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyPortfolio.DAL.Context;
 using MyPortfolio.DAL.Entities;
 
 namespace MyPortfolio.Controllers
 {
-	public class FeatureController : Controller
+    [Authorize]
+
+    public class FeatureController : Controller
 	{
 		MyPortfolioContext context = new MyPortfolioContext();
 

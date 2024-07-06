@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyPortfolio.DAL.Context;
 
 namespace MyPortfolio.Controllers
 {
-	public class MessageController : Controller
+    [Authorize]
+
+    public class MessageController : Controller
 	{
 		MyPortfolioContext context = new MyPortfolioContext();
 
