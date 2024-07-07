@@ -1,0 +1,37 @@
+﻿@model Admin
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+
+<div class="content">
+	<div class="container-fluid">
+		<h4 class="page-title"></h4>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Admin Bilgileri Güncelleme Sayfası</div>
+					</div>
+					<div class="card-body">
+
+						<form method="post">
+							<input type="hidden" asp-for="AdminId">
+							
+							<label>Kullanıcı Adı</label>
+							<input type="text" asp-for="Username" class="form-control" />
+							<br />
+							<label></label>
+							<input type="text" asp-for="Password" class="form-control" />
+							<br />
+							<button class="btn btn-primary">Güncelle</button>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

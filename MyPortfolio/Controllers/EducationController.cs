@@ -37,7 +37,6 @@ namespace MyPortfolio.Controllers
 			context.Educations.Remove(value);
 			context.SaveChanges();
 			return RedirectToAction("EducationList");
-
 		}
 
 		[HttpGet]

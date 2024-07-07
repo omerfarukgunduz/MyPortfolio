@@ -1,0 +1,51 @@
+﻿@model List<Admin>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+div class="content">
+<div class="container-fluid">
+	<h4 class="page-title">Admin Yönetimi</h4>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title">Admin Bilgileri Güncelleme Sayfası</div>
+				</div>
+				<div class="card-body">
+					<div class="card-sub">
+						Kullanıcı Adı ve Şifreyi aşağıdaki panelden güncelleyebilirsiniz.
+					</div>
+					<table class="table mt-3">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Kullanıcı Adı</th>
+								<th scope="col">Şifre</th>
+								<th scope="col">Güncelle</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var item in Model)
+							{
+								<tr>
+									<td>@item.AdminId</td>
+									<td>@item.Username</td>
+									<td>
+										@{
+											string maskedPassword = new string('*', item.Password.Length);
+										}
+										@maskedPassword
+									</td>
+									<td><a href="/Admin/Update/@item.AdminId" class="btn btn-success">Güncelle</a></td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
