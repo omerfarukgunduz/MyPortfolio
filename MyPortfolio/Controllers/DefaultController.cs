@@ -21,7 +21,8 @@ namespace MyPortfolio.Controllers
         [HttpPost]
         public PartialViewResult Message(Message message)
         {
-			context.Messages.Add(message);
+            message.SendDate = DateTime.Now;
+            context.Messages.Add(message);
 			context.SaveChanges();
 			return PartialView("Index");
         }
