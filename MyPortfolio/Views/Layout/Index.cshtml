@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     Layout = null;
 }
 
@@ -28,7 +29,10 @@
             </div>
             <nav class="navbar navbar-header navbar-expand-lg">
                 <div class="container-fluid">
-                    
+                        <img src="https://img.icons8.com/ios-filled/50/000000/partly-cloudy-day.png" alt="Weather Icon" class="weather-icon">
+                    <span style= "margin-left:8px; font-family: 'Roboto', sans-serif; font-size: 22px;" id="weather"></span>
+                   
+
                     <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
                      
                         
@@ -64,6 +68,7 @@
                             <span>
                                 Ömer Faruk Gündüz
                                 <span class="user-level">Admin</span>
+
                             </span>
                         </a>
                         <div class="clearfix"></div>
@@ -167,5 +172,26 @@
 <script src="~/Ready-Bootstrap-Dashboard-master/assets/js/plugin/chart-circle/circles.min.js"></script>
 <script src="~/Ready-Bootstrap-Dashboard-master/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 <script src="~/Ready-Bootstrap-Dashboard-master/assets/js/ready.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            url: "/Deneme/Index",
+            type: "GET",
+            success: function (data) {
+                debugger;
+                $("#weather").text('İstanbul ' + data.temp + " °C");
+            },
+            error: function (xhr, status, error) {
+                console.error("Error occurred: " + error);
+            }
+        });
+    });
+
+  
+
+</script>
+
+
 </html>
 
