@@ -22,7 +22,8 @@
 							<thead>
 								<tr>
 									<th scope="col">#</th>
-									<th scope="col">Uygulama Adı</th>
+									<th scope="col">Gönderici Ad Soyad</th>
+									<th scope="col">Mail Adresi</th>
 									<th scope="col">Şifre</th>
 									<th scope="col">Güncelle</th>
 								</tr>
@@ -32,6 +33,7 @@
 								{
 									<tr>
 										<td>@item.Id</td>
+										<td>@item.OwnerName</td>
 										<td>@item.MailAddress</td>
 										<td>
 											@{
