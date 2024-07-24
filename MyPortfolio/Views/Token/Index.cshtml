@@ -1,0 +1,52 @@
+﻿@model List<Token>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+
+<div class="content">
+	<div class="container-fluid">
+		<h4 class="page-title">Mail Uygulama Şifresi Yönetimi</h4>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Uygulama Şifresi Güncelleme Sayfası</div>
+					</div>
+					<div class="card-body">
+						<div class="card-sub">
+							Uyguluma şifrenizi almak için gmailinizin 2 adımlı doğrulama seçeneği açık olmalıdır( <a href="https://myaccount.google.com/u/1/signinoptions/twosv?rapt=AEjHL4NN_X22uSUmPbuvlb0ktWKveBovWq6kP29zK93SZsTxYTo2YlWnWlNqOqzHIyHlWlpibEWiJZ-PCSHidXMaADfbNuJSComoWxxFcEniq24LF_SPmV8" target="_blank">Açmak için tıklayınız</a>). Sonrasında <a href="https://myaccount.google.com/u/3/apppasswords?rapt=AEjHL4PkZsF_Ns3F6fEbdbHyN4o-iYEiirVvZ4Ip3ZmBr4zBy7ObIZXffVKgM4DLq_x1phnHGxZNvLpZeqgZFxtQ3scKplVOrtxNanw-RDrN_zyJdUpDrj4" target="_blank">şu</a> adresten uygulama şifresi oluşturabilirsiniz.
+							</div>
+						<table class="table mt-3">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Uygulama Adı</th>
+									<th scope="col">Şifre</th>
+									<th scope="col">Güncelle</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>@item.Id</td>
+										<td>@item.MailAddress</td>
+										<td>
+											@{
+												string maskedPassword = new string('*', item.Password.Length);
+											}
+											@maskedPassword
+										</td>
+										<td><a href="/Token/TokenUpdate/@item.Id" class="btn btn-success">Güncelle</a></td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

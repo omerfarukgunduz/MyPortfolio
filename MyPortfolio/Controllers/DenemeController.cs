@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyPortfolio.Models;
 using Newtonsoft.Json;
 
@@ -6,8 +7,9 @@ namespace MyPortfolio.Controllers
 {
     public class DenemeController : Controller
     {
-      
-            public async Task<Main> Index()
+		[Authorize]
+
+		public async Task<Main> Index()
             {
 
             // sql bağlantı - sql sorgu veri çek, location değişkeni 

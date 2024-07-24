@@ -1,0 +1,70 @@
+﻿@model Mail
+@{
+    ViewData["Title"] = "MessageSend";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+
+
+<div class="content">
+	<div class="container-fluid">
+		<h4 class="page-title">Mail Gönderme Sayfası</h4>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Mail Gönder </div>
+					</div>
+					<div class="card-body">
+
+						<form method="post" id="contact-form">
+							<label>Alıcı Adı</label>
+							<input type="text" asp-for="ReceiverMail" class="form-control" />
+							<br />
+							<label>Konu Başlığı</label>
+							<input type="text" asp-for="Subject" class="form-control" />
+							<br />
+							<label>Mail İçeriği</label>
+							<textarea rows="4" class="form-control" asp-for="Body"></textarea>
+							<br />
+							
+							<button class="btn btn-primary">Mail Gönder</button>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	document.getElementById('contact-form').addEventListener('submit', function (event) {
+		var form = event.target;
+		var inputs = form.querySelectorAll('input');
+		var isValid = true;
+
+		for (var i = 0; i < inputs.length; i++) {
+			if (!inputs[i].value) {
+				isValid = false;
+				inputs[i].classList.add('error');
+			} else {
+				inputs[i].classList.remove('error');
+			}
+		}
+
+		if (!isValid) {
+			event.preventDefault();
+		} else {
+
+			window.alert('Mail gönderildi! ');
+		}
+	});
+</script>
+
+<style>
+	.error {
+		border-color: red;
+	}
+</style>
+

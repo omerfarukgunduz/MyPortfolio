@@ -22,6 +22,8 @@ namespace MyPortfolio.DAL.Context
 		public DbSet<DownloadCV> DownloadCVs { get; set; }
 		public DbSet<Message> Messages { get; set; }
 		public DbSet<Admin> Admins { get; set; }
+		public DbSet<Token> Tokens { get; set; }
+		public DbSet<Mail> Mails { get; set; }
 
 	}
 }

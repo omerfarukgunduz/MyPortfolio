@@ -1,8 +1,9 @@
-﻿@model Admin
+﻿@model Token
 @{
-    ViewData["Title"] = "Update";
+    ViewData["Title"] = "TokenUpdate";
     Layout = "~/Views/Layout/Index.cshtml";
 }
+
 
 
 <div class="content">
@@ -12,17 +13,19 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header">
-						<div class="card-title">Admin Bilgileri Güncelleme Sayfası</div>
+						<div class="card-title">Uygulama Şifreleri Güncelleme Sayfası</div>
 					</div>
 					<div class="card-body">
 
 						<form method="post">
-							<input type="hidden" asp-for="AdminId">
-							
-							<label>Kullanıcı Adı</label>
-							<input type="text" asp-for="Username" class="form-control" />
+							<input type="hidden" asp-for="Id">
+							<label>Ad Soyad</label>
+							<input type="text" asp-for="OwnerName" class="form-control" />
 							<br />
-							<label>Şifre</label>
+							<label>Mail Adresi</label>
+							<input type="text" asp-for="MailAddress" class="form-control" />
+							<br />
+							<label>Uygulama Şifresi</label>
 							<input type="text" asp-for="Password" class="form-control" />
 							<br />
 							<button class="btn btn-primary">Güncelle</button>
@@ -34,4 +37,6 @@
 		</div>
 	</div>
 </div>
+
+
 
