@@ -23,9 +23,11 @@
                             <br />
                             Tarih: <b>@Model.SendDate</b>
                             <br /><br />
+                            Konu: <b>@Model.Subject</b>
+                            <br /><br />
                             Mesaj: <b>@Model.MessageDetail</b>
                         </div>
-                        <a href="/Message/MessageSend/" class="btn btn-primary">Cevapla</a>
+                        <a href="/Message/MessageSend?email=@Model.Email" class="btn btn-primary">Cevapla</a>
 
                     </div>
                 </div>
