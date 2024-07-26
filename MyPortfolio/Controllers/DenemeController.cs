@@ -5,9 +5,10 @@ using Newtonsoft.Json;
 
 namespace MyPortfolio.Controllers
 {
+    [Authorize]
+
     public class DenemeController : Controller
     {
-		[Authorize]
 
 		public async Task<Main> Index()
             {
