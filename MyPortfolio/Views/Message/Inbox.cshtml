@@ -19,36 +19,36 @@
                         </div>
                         <table class="table mt-3">
                             <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Gönderen</th>
-                                    <th scope="col">Konu</th>
-                                    <th scope="col">Tarih</th>
-                                    <th scope="col">Mesajı Aç</th>
-                                    <th scope="col">Durum</th>
-                                    <th scope="col">Sil</th>
-                                </tr>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Gönderen</th>
+                                <th scope="col">Konu</th>
+                                <th scope="col">Tarih</th>
+                                <th scope="col">Mesajı Aç</th>
+                                <th scope="col">Durum</th>
+                                <th scope="col">Sil</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr>
-                                        <td>@item.MessageId</td>
-                                        <td>@item.NameSurname</td>
-                                        <td>@item.Subject</td>
-                                        <td>@item.SendDate.ToShortDateString()</td>
-                                        <td><a href="/Message/MessageDetail/@item.MessageId" class="btn btn-warning">Mesajı Aç</a></td>
-                                        @if (item.IsRead == true)
-                                        {
-                                            <td><a href="/Message/ChangeIsReadToFalse/@item.MessageId" class="btn btn-dark">Okunmadı Olarak İşaretle</a></td>
-                                        }
-                                        else
-                                        {
-                                            <td><a href="/Message/ChangeIsReadToTrue/@item.MessageId" class="btn btn-info">Okundu Olarak İşaretle</a></td>
-                                        }
-                                        <td><a href="/Message/DeleteMessage/@item.MessageId" class="btn btn-danger">Sil</a></td>
-                                    </tr>
-                                }
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.MessageId</td>
+                                    <td>@item.NameSurname</td>
+                                    <td>@item.Subject</td>
+                                    <td>@item.SendDate.ToShortDateString()</td>
+                                    <td><a href="/Message/MessageDetail/@item.MessageId" class="btn btn-warning">Mesajı Aç</a></td>
+                                    @if (item.IsRead == true)
+                                    {
+                                        <td><a href="/Message/ChangeIsReadToFalse/@item.MessageId" class="btn btn-dark">Okunmadı Olarak İşaretle</a></td>
+                                    }
+                                    else
+                                    {
+                                        <td><a href="/Message/ChangeIsReadToTrue/@item.MessageId" class="btn btn-info">Okundu Olarak İşaretle</a></td>
+                                    }
+                                        <td><a data-id="@item.MessageId" href="/Message/DeleteMessage/@item.MessageId" class="btn btn-danger sil">Sil</a></td>
+                                </tr>
+                            }
                             </tbody>
                         </table>
                     </div>
@@ -57,3 +57,61 @@
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    // Tüm "sil" sınıfına sahip öğeleri seç
+    var deleteButtons = document.querySelectorAll(".sil");
+
+    // Her bir buton için olay dinleyici ekle
+    deleteButtons.forEach(function (button) {
+        button.addEventListener("click", function (e) {
+            e.preventDefault();
+            var dataid = button.getAttribute("data-id");
+
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: "Silmek istediğinizden emin misiniz?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Evet, sil!',
+                cancelButtonText: 'İptal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    performDelete(dataid);
+                }
+            });
+        });
+    });
+
+    function performDelete(dataid) {
+        $.ajax({
+            url: '/Message/DeleteMessage', // Controller işleminin URL'sini doğru şekilde belirtin
+            method: 'POST', // Veya GET, PUT, DELETE
+            data: { id: dataid }, // İsteğe gönderilecek veriler
+            success: function (data) {
+                Swal.fire({
+                    icon: 'success', // İkon tipi
+                    title: 'Silindi!', // Başlık
+                    text: 'İşlem başarıyla tamamlandı.', // Metin içeriği
+                    showConfirmButton: false, // Onay butonunu gizle
+                    timer: 1500 // Otomatik kapatılma süresi (isteğe bağlı)
+                });
+
+                // Belirli bir süre sonra sayfanın yeniden yüklenmesini sağla
+                setTimeout(function () {
+                    location.reload(); // Sayfayı yeniden yükle
+                }, 1500);
+            },
+            error: function () {
+                Swal.fire(
+                    'Hata!',
+                    'İşlem sırasında bir hata oluştu.',
+                    'error'
+                );
+            }
+        });
+    }
+</script>

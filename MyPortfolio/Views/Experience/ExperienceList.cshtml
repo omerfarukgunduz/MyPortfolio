@@ -39,7 +39,7 @@
 											<td>@item.Company</td>
 											<td>@item.Title</td>
 											<td>@item.Date</td>
-											<td><a href="/Experience/DeleteExperience/@item.ExperieceId" class="btn btn-danger">Sil</a></td>
+                                        <td><a data-id="@item.ExperieceId" href="/Experience/DeleteExperience/@item.ExperieceId" class="btn btn-danger sil">Sil</a></td>
 											<td><a href="/Experience/UpdateExperience/@item.ExperieceId" class="btn btn-success">Güncelle</a></td>
 										</tr>
 									}
@@ -53,4 +53,60 @@
 		</div>
 		</div>
 
-	
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    // Tüm "sil" sınıfına sahip öğeleri seç
+    var deleteButtons = document.querySelectorAll(".sil");
+
+    // Her bir buton için olay dinleyici ekle
+    deleteButtons.forEach(function (button) {
+        button.addEventListener("click", function (e) {
+            e.preventDefault();
+            var dataid = button.getAttribute("data-id");
+
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: "Silmek istediğinizden emin misiniz?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Evet, sil!',
+                cancelButtonText: 'İptal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    performDelete(dataid);
+                }
+            });
+        });
+    });
+
+    function performDelete(dataid) {
+        $.ajax({
+            url: '/Experience/DeleteExperience', // Controller işleminin URL'sini doğru şekilde belirtin
+            method: 'POST', // Veya GET, PUT, DELETE
+            data: { id: dataid }, // İsteğe gönderilecek veriler
+            success: function (data) {
+                Swal.fire({
+                    icon: 'success', // İkon tipi
+                    title: 'Silindi!', // Başlık
+                    text: 'İşlem başarıyla tamamlandı.', // Metin içeriği
+                    showConfirmButton: false, // Onay butonunu gizle
+                    timer: 1500 // Otomatik kapatılma süresi (isteğe bağlı)
+                });
+
+                // Belirli bir süre sonra sayfanın yeniden yüklenmesini sağla
+                setTimeout(function () {
+                    location.reload(); // Sayfayı yeniden yükle
+                }, 1500);
+            },
+            error: function () {
+                Swal.fire(
+                    'Hata!',
+                    'İşlem sırasında bir hata oluştu.',
+                    'error'
+                );
+            }
+        });
+    }
+</script>
